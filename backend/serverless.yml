@@ -1,0 +1,17 @@
+service: cs3219-serverless-b4
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  getWeatherRecTmr:
+    handler: handler.getWeatherRecTmr
+    events:
+      - http:
+          path: /
+          method: get
+          cors:
+            origin: '*'
