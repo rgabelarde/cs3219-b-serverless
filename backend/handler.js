@@ -19,6 +19,13 @@ module.exports.getWeatherRecTmr = async (event) => {
   if (res[0].forecasts[0].forecast.includes("showers")) {
     return {
       statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*',
+        'Accept': '*/*',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(
         {
           message: "Looks like it will rain tomorrow, remember to take an umbrella with you.",
@@ -31,6 +38,9 @@ module.exports.getWeatherRecTmr = async (event) => {
   } else {
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*" // Required for CORS support to work
+      },
       body: JSON.stringify(
         {
           message: "Looks like it will be cloudy or sunning tomorrow, enjoy your day outdoors!",

@@ -6,9 +6,10 @@ export default function App() {
   const [message, setMessage] = useState('');
 
   const getWeatherForecast = async () => {
-    const res = await fetch(`https://qq7ffg82t5.execute-api.us-east-1.amazonaws.com/dev/`)
+    const res = await axios.get(`https://qq7ffg82t5.execute-api.us-east-1.amazonaws.com/dev/`)
       .then(res => {
-        setMessage(res.message);
+        console.log(res.data.message);
+        setMessage(res.data.message);
       }).catch(err => console.log(err));
   };
 
